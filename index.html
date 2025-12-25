@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ca">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Endevina on visc</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <p class="eyebrow">Tres rondes seguides</p>
+      <h1>Endevina on visc</h1>
+      <p class="greeting">Hola, Nasti! Preparada per jugar?</p>
+      <p class="subtitle">Endevina tres paraules catalanes, una rere l'altra. Verd: posició correcta. Groc: lletra correcta, posició incorrecta. Gris: no hi és.</p>
+    </header>
+
+    <section class="panel" id="game">
+      <div class="status">
+        <div>
+          <span class="label">Ronda</span>
+          <span id="round">1</span>
+          <span class="label">/</span>
+          <span id="round-total">3</span>
+        </div>
+        <div id="message" class="message"></div>
+      </div>
+
+      <div id="board" class="board" aria-live="polite"></div>
+
+      <div id="keyboard" class="keyboard"></div>
+    </section>
+
+    <footer class="footer" id="footer">
+      <button id="toggle-dict" class="button ghost" type="button">Validacio: activada</button>
+      <button id="share" class="button" type="button">Comparteix el resultat</button>
+      <button id="reset" class="button ghost" type="button">Torna a començar</button>
+    </footer>
+
+    <section class="panel final hidden" id="final">
+      <h2 id="final-title">Ho has encertat!</h2>
+      <p class="subtitle" id="final-message">Has completat les tres rondes. Hi ha una pagina per internet on, si hi poses aquestes tres paraules, trobaras una ubicacio.</p>
+      <a class="button" id="final-link" href="https://what3words.com/" target="_blank" rel="noopener">Obrir what3words</a>
+      <button class="button ghost" id="final-restart" type="button">Tornar a començar</button>
+    </section>
+
+    <div class="overlay hidden" id="round-overlay" role="dialog" aria-live="polite">
+      <div class="overlay-card">
+        <p class="overlay-emoji">🎉</p>
+        <h3 id="overlay-title">Molt be!</h3>
+        <p class="subtitle" id="overlay-message">Ronda superada.</p>
+        <button class="button ghost" id="overlay-close" type="button">Continua</button>
+      </div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
