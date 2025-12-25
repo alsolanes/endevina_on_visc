@@ -41,13 +41,14 @@ const roundOverlay = document.getElementById("round-overlay");
 const overlayTitle = document.getElementById("overlay-title");
 const overlayMessage = document.getElementById("overlay-message");
 const overlayClose = document.getElementById("overlay-close");
+const scrollHint = document.getElementById("scroll-hint");
 
 roundTotal.textContent = ROUND_WORDS.length;
 
 const KEY_ROWS = [
   ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
   ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
-  ["ENT", "z", "x", "c", "v", "b", "n", "m", "DEL"],
+  ["DEL", "z", "x", "c", "v", "b", "n", "m", "ENT"],
 ];
 
 const FUN_MESSAGES = [
@@ -162,6 +163,12 @@ function setupKeyboard() {
   });
 }
 
+function resetKeyboardStyles() {
+  document.querySelectorAll(".key").forEach((button) => {
+    button.classList.remove("correct", "present", "absent");
+  });
+}
+
 function setupBoard() {
   board.innerHTML = "";
   const length = currentLength();
@@ -195,7 +202,9 @@ function startRound() {
   setMessage(roundHint());
   showGame();
   setupBoard();
+  resetKeyboardStyles();
   updateKeyboard();
+  render();
 }
 
 function resetGame() {
@@ -509,6 +518,10 @@ finalRestart.addEventListener("click", () => {
 
 overlayClose.addEventListener("click", () => {
   hideRoundOverlay();
+});
+
+scrollHint.addEventListener("click", () => {
+  footer.scrollIntoView({ behavior: "smooth", block: "start" });
 });
 
 window.addEventListener("keydown", handlePhysicalKey);

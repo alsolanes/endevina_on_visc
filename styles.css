@@ -25,7 +25,7 @@ body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 24px;
+  padding: 16px;
 }
 
 .app {
@@ -170,7 +170,7 @@ h1 {
 }
 
 .tile {
-  width: min(54px, 14vw);
+  width: min(50px, 12vw);
   aspect-ratio: 1 / 1;
   border-radius: 12px;
   border: 2px solid rgba(32, 31, 26, 0.2);
@@ -184,8 +184,8 @@ h1 {
 }
 
 .row.long .tile {
-  width: min(38px, 8vw);
-  font-size: clamp(0.9rem, 4vw, 1.2rem);
+  width: min(34px, 8vw);
+  font-size: clamp(0.85rem, 4vw, 1.1rem);
 }
 
 .row.invalid .tile {
@@ -247,18 +247,19 @@ h1 {
 .key-row {
   display: flex;
   gap: 6px;
+  flex-wrap: nowrap;
 }
 
 .key {
   border: none;
   background: #efe3d0;
   color: var(--ink);
-  padding: 10px 12px;
+  padding: 12px 12px;
   border-radius: 10px;
   font-weight: 600;
   cursor: pointer;
   transition: transform 120ms ease, background 120ms ease;
-  min-width: 30px;
+  min-width: 34px;
 }
 
 .key:active {
@@ -323,4 +324,50 @@ h1 {
   .footer {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+@media (max-width: 520px) {
+  body {
+    place-items: start;
+  }
+
+  .app {
+    gap: 16px;
+  }
+
+  .panel {
+    border-radius: 18px;
+    padding: 16px;
+  }
+
+  .tile {
+    width: min(44px, 12vw);
+    font-size: clamp(1rem, 4.5vw, 1.4rem);
+  }
+
+  .row.long .tile {
+    width: min(30px, 7.5vw);
+    font-size: clamp(0.8rem, 3.6vw, 1rem);
+  }
+
+  .key {
+    padding: 10px 10px;
+    min-width: 30px;
+    font-size: 0.9rem;
+  }
+}
+
+.scroll-hint {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow);
 }
