@@ -93,7 +93,7 @@ function showRoundOverlay() {
   const messageText =
     ROUND_MESSAGES[state.round % ROUND_MESSAGES.length] || "Molt be!";
   overlayTitle.textContent = "Molt be!";
-  overlayMessage.textContent = messageText;
+  overlayMessage.innerHTML = `${messageText} Paraula: <strong>${currentWord().toUpperCase()}</strong>.`;
   roundOverlay.classList.remove("hidden");
   state.overlayActive = true;
 }
@@ -385,10 +385,11 @@ function moveToNextRound(passed) {
       state.done = true;
       if (state.solved.every(Boolean)) {
         finalTitle.textContent = "Ho has encertat!";
-        finalMessage.textContent =
-          `Has completat les tres rondes. Escriu aquestes tres paraules en aquest ordre: ${FINAL_ORDER_WORDS.join(
-            ", "
-          )}. Hi ha una pagina per internet on, si hi poses aquestes tres paraules, trobaras una ubicacio.`;
+        const finalWords = FINAL_ORDER_WORDS.map(
+          (word) => `<strong>${word}</strong>`
+        ).join(", ");
+        finalMessage.innerHTML =
+          `Has completat les tres rondes. Escriu aquestes tres paraules en aquest ordre: ${finalWords}. Hi ha una pagina per internet on, si hi poses aquestes tres paraules, trobaras una ubicacio.`;
         finalLink.classList.remove("hidden");
         showFinal();
       } else {
